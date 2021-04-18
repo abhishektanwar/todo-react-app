@@ -29,7 +29,9 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
 		return <TodoForm edit={edit} onSubmit={submitUpdate} />
 	}
 	// orignal
-	// return todos.map((todo,index)=>(
+	// return (
+	// 	<>
+	// 		{todos && todos.map((todo,index)=>(
 	// 	<div className={todo.isComplete ? "todo-row complete":"todo-row"} key={index}>
 	// 		<div key={todo.id} onClick = {() => {completeTodo(todo.id)}}>{todo.text}</div>
 	// 	<div className="icons">
@@ -38,14 +40,12 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
 	// 	</div>
 		
 	// 	</div>
-	// ))
+	// ))}
+	// 	</>
+	// )
+		
 	
-	return (
-		<>
-		{todoss && console.log(todos)}
-		{todoss && todoss.map((todo) => <TODO key={todo.id} {...todo}/>)}
-		</>
-	)
+	return <>{todoss && todoss.map((todo) => <TODO key={todo.id} {...todo}/>)}</>
 	
 	
 
@@ -90,19 +90,20 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
 		if(edit.id){
 			return <TodoForm edit={edit} onSubmit={submitUpdate} />
 		}
+		console.log("heajf")
 		return (
-				<div>Hello world</div>
-				// <>
-				// <div className={completed ? "todo-row complete":"todo-row"} key={id}>
-				// 	<div key={id} onClick = {() => {onCompleteTodo(id,completed)}} >{text}</div>
-				// <div className="icons">
-				// 	<RiCloseCircleLine onClick={() => {onDeleteTodo(id)}} className='delete-icon'/>
-				// 	<TiEdit className="edit-icon" onClick={() => {setEdit({id:id,value:text})}}/>
-				// 	{/* <TiEdit className="edit-icon" onClick={() => onEditTodo(id)}/> */}
-				// </div>
+				// <div>Hello World</div>
+
+				<div className={completed ? "todo-row complete":"todo-row"} key={id}>
+					<div key={id} onClick = {() => {onCompleteTodo(id,completed)}} >{text}</div>
+				<div className="icons">
+					<RiCloseCircleLine onClick={() => {onDeleteTodo(id)}} className='delete-icon'/>
+					<TiEdit className="edit-icon" onClick={() => {setEdit({id:id,value:text})}}/>
+					{/* <TiEdit className="edit-icon" onClick={() => onEditTodo(id)}/> */}
+				</div>
 		
-				// </div>
-				// </>
+				</div>
+
 
 		);
 	}

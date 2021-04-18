@@ -3,28 +3,19 @@ import TodoForm from './TodoForm'
 import Todo from './Todo'
 import { useAuth } from "../context/AuthContext"
 import { useHistory } from "react-router-dom"
-import firebase, { firestore,auth } from '../firebase'
-
 const ToDoList = () => {
 	const [todos,setTodos] = useState([])
 	const [error,setError] = useState('')
 	const { logout } = useAuth()
 	const history = useHistory()
-	const todosRef = firestore.collection(`users/${auth.currentUser.uid}/todos`)
 	const addTodo = (todo) => {
-		// local add
-		// if(!todo.text || /^\s*$/.test(todo.text)){
-		// 	return
-		// }
+		if(!todo.text || /^\s*$/.test(todo.text)){
+			return
+		}
 
-		// const newTodos = [todo, ...todos]
-		// setTodos(newTodos)
+		const newTodos = [todo, ...todos]
+		setTodos(newTodos)
 		// console.log(...todos)
-		todosRef.add({
-			text:todo.text,
-			completed:todo.completed,
-			// createdAt : firebase.firestore.FieldValue.serverTimestamp(),
-		})
 	}
 
 	const removeTodo = (id) => {
@@ -32,15 +23,12 @@ const ToDoList = () => {
 		setTodos(removeArr)
 	}
 
-	const updateTodo = (d) => {
-		if(!d.value.text || /^\s*$/.test(d.value.text)){
+	const updateTodo = (id,newValue) => {
+		if(!newValue.text || /^\s*$/.test(newValue.text)){
 			return
 		}
 
-		// setTodos(prev => prev.map(item => (item.id === id ? newValue : item)))
-		console.log("update to of todolist ")
-		
-		// }
+		setTodos(prev => prev.map(item => (item.id === id ? newValue : item)))
 	}
 
 	const completeTodo = id => {
