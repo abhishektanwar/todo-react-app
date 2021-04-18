@@ -17,19 +17,19 @@ const TodoForm = (props) => {
 	const handleSubmit = (e) => {
 		e.preventDefault()
 
-		todosRef.add({
-			text:input,
-			completed:false,
-			// createdAt : firebase.firestore.FieldValue.serverTimestamp(),
-		})
-
-		// props.onSubmit({
-		// 	// id:Math.floor(Math.random()*1000),
-		// 	// text:input
-		// 		text:input,
-		// 		completed:false
-			
+		// todosRef.add({
+		// 	text:input,
+		// 	completed:false,
+		// 	// createdAt : firebase.firestore.FieldValue.serverTimestamp(),
 		// })
+
+		props.onSubmit({
+			// id:Math.floor(Math.random()*1000),
+			// text:input
+				text:input,
+				completed:false
+			
+		})
 		setInput('')
 	}
 	return (
