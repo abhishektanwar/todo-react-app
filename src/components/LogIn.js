@@ -45,9 +45,14 @@ function Login() {
 						placeholder="Password"
 					></input>
 				</div>
-				
-				
 				<button disabled={loading} className="signin-button" type="submit">Sign In</button>
+				<div className="test-creds">
+					<h3 style={{paddingBottom:"10px"}}>Test Credenstials</h3>
+					<h5>Email : g@g.com</h5>
+					<h5>Password : 123456</h5>
+				</div>
+				
+				
 			</form>
 			<div id="signup-link">
 				Already have an account? <Link to="/signup">Sign Up</Link>
