@@ -25,22 +25,31 @@ function Login() {
 	}
 	return (
 		<>
-			<form onSubmit={handleSubmit}>
-				<label>Email</label>
-				<input style={{display:"block"}}
-					type="email"
-					required
-					ref ={emailRef}
-				></input>
-				<label>Password</label>
-				<input
-					type="password"
-					required
-					ref ={passwordRef}
-				></input>
-				<button type="submit">Sign In</button>
+			<form className="todo-form" onSubmit={handleSubmit}>
+				<h1>Sign In</h1>
+				<div className="login-field">
+					<input 
+						type="email"
+						required
+						ref ={emailRef}
+						className="todo-input"
+						placeholder="Email"
+					></input>
+				</div>
+				<div className="login-field">
+					<input
+						type="password"
+						required
+						ref ={passwordRef}
+						className="todo-input"
+						placeholder="Password"
+					></input>
+				</div>
+				
+				
+				<button disabled={loading} className="signin-button" type="submit">Sign In</button>
 			</form>
-			<div>
+			<div id="signup-link">
 				Already have an account? <Link to="/signup">Sign Up</Link>
 			</div>
 			

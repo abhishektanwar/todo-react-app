@@ -45,13 +45,13 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
 	// )
 		
 	
-	return <>{todoss && todoss.map((todo) => <TODO key={todo.id} {...todo} updateTodo={updateTodo}/>) }</>
+	return <>{todoss && todoss.map((todo) => <TODO key={todo.id} {...todo}/>) }</>
 	
 	
 
 }
 	// return ({todos && todos.map((todo)=>)})
-	const TODO = ({id,completed,text,updateTodo}) => {
+	const TODO = ({id,text,completed}) => {
 		
 		const [edit,setEdit] = useState({
 			id:null,
@@ -63,10 +63,24 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
 		todosRef.doc(id).set({ completed: !completed }, { merge: true });
 
 		const onDeleteTodo = (id) => todosRef.doc(id).delete();
-		
+		const updateTodo = (id,newValue) => {
+			if(!newValue.text || /^\s*$/.test(newValue.text)){
+				return
+			}
+	
+			// setTodos(prev => prev.map(item => (item.id === id ? newValue : item)))
+			console.log("here in todo function")
+			console.log(id,newValue)
+			// todosRef.doc(id).update({
+			// 	text: newValue
+			// });
+		}
 		// console.log(todosRef)
 		const submitUpdate = value => {
 			// updateTodo(edit.id,value)
+			todosRef.doc(edit.id).update({
+				text: value
+			});
 			setEdit({
 				id:null,
 				value:''
@@ -79,9 +93,9 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
 		const onEditTodo = (id) => {
 			let newstr = prompt('edit');
 			if (String(newstr) !== ""){
-			  todosRef.doc(id).update({
-				text: newstr
-			  });
+				todosRef.doc(id).update({
+					text: newstr
+				});
 			}
 			setIsUpdating(true)
 		}

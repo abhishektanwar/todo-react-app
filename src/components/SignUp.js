@@ -1,7 +1,8 @@
 import React,{useRef,useState} from 'react'
 import { useAuth } from "../context/AuthContext"
 import { auth } from "../firebase"
-import { useHistory } from "react-router-dom"
+import { useHistory,Link } from "react-router-dom"
+
 function SignUp() {
 	const emailRef = useRef()
 	const passwordRef = useRef()
@@ -31,31 +32,44 @@ function SignUp() {
 	}
 	return (
 		<>
-			<h2>Sign Up</h2>
-			{error && <alert>{error}</alert>}
-			<form onSubmit={handleSignUpSubmit}>
-				<label>Email</label>
-				<input style={{display:"block"}}
+			<h1>Sign Up</h1>
+			<div className="alert">
+				{error && <alert class="alert-error">{error}</alert>}
+			</div>
+			
+			<form className="todo-form" onSubmit={handleSignUpSubmit}>
+				<div className="signup-field">
+				<input
 					type="email"
 					required
 					ref ={emailRef}
+					className="todo-input"
+					placeholder="Email"
 				></input>
-				<label>Password</label>
+				</div>
+				<div className="signup-field">
 				<input
 					type="password"
 					required
 					ref ={passwordRef}
+					className="todo-input"
+					placeholder="Password"
 				></input>
-				<label>Confirm Password</label>
+				</div>
+				<div className="signup-field">
 				<input
 					type="password"
 					required
 					ref ={confirmPasswordRef}
+					className="todo-input"
+					placeholder="Confirm Password"
 				></input>
-				<button type="submit">Sign Up</button>
+				</div>
+				
+				<button disabled={loading} className="signin-button" type="submit">Sign Up</button>
 			</form>
-			<div className="w-100 text-center mt-2">
-				Already have an account? Log In
+			<div id="signup-link">
+				Already have an account?<Link to="/login"> Log In</Link>
 			</div>
 		</>
 	)

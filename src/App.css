@@ -32,14 +32,30 @@ h1{
 	color: #fff;
 	font-size: 24px;
 }
-
+.label{
+	font-size: 1.4rem;
+	margin: 0 10px ;
+}
+.alert{
+	color:red;
+	font-size: 1.1rem;
+	margin: 10px 0;
+}
+.login-field{
+	/* padding-bottom: 20px; */
+	margin-bottom:30px ;
+}
+.signup-field{
+	/* padding-bottom: 20px; */
+	margin-bottom:30px ;
+}
 .complete{
 	text-decoration: line-through;
 	opacity: 0.4;
 }
 
 .todo-form{
-	/* margin-bottom: 32px; */
+	margin-bottom: 32px;
 }
 
 .todo-input{
@@ -56,7 +72,42 @@ h1{
 .todo-input::placeholder{
 	color:#e2e2e2
 }
-
+.todo-form label{
+	color:#fff
+}
+#signup-link{
+	color:#fff;
+	margin-top: 110px;
+}
+.logout-button{
+	margin: 160px;
+	padding: 16px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	outline: none;
+	background: linear-gradient(
+		90deg,
+		rgba(93,12,255,1)0%,
+		rgba(155,0,250,1)100%
+	);
+	color: #fff;
+	text-transform: capitalize;
+}
+.signin-button{
+	padding: 16px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	outline: none;
+	background: linear-gradient(
+		90deg,
+		rgba(93,12,255,1)0%,
+		rgba(155,0,250,1)100%
+	);
+	color: #fff;
+	text-transform: capitalize;
+}
 .todo-button{
 	padding: 16px;
 	border: none;
