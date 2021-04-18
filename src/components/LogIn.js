@@ -55,7 +55,7 @@ function Login() {
 				
 			</form>
 			<div id="signup-link">
-				Already have an account? <Link to="/signup">Sign Up</Link>
+				Don't have an account? <Link to="/signup">Sign Up</Link>
 			</div>
 			
 		</>
