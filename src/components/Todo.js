@@ -45,13 +45,13 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
 	// )
 		
 	
-	return <>{todoss && todoss.map((todo) => <TODO key={todo.id} {...todo}/>)}</>
+	return <>{todoss && todoss.map((todo) => <TODO key={todo.id} {...todo} updateTodo={updateTodo}/>) }</>
 	
 	
 
 }
 	// return ({todos && todos.map((todo)=>)})
-	const TODO = ({id,completed,text}) => {
+	const TODO = ({id,completed,text,updateTodo}) => {
 		
 		const [edit,setEdit] = useState({
 			id:null,
@@ -77,12 +77,12 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
 			setIsUpdating(false)
 		}
 		const onEditTodo = (id) => {
-			// let newstr = prompt('edit');
-			// if (String(newstr) !== ""){
-			//   todosRef.doc(id).update({
-			// 	text: newstr
-			//   });
-			// }
+			let newstr = prompt('edit');
+			if (String(newstr) !== ""){
+			  todosRef.doc(id).update({
+				text: newstr
+			  });
+			}
 			setIsUpdating(true)
 		}
 		
@@ -98,8 +98,8 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
 					<div key={id} onClick = {() => {onCompleteTodo(id,completed)}} >{text}</div>
 				<div className="icons">
 					<RiCloseCircleLine onClick={() => {onDeleteTodo(id)}} className='delete-icon'/>
-					<TiEdit className="edit-icon" onClick={() => {setEdit({id:id,value:text})}}/>
-					{/* <TiEdit className="edit-icon" onClick={() => onEditTodo(id)}/> */}
+					{/* <TiEdit className="edit-icon" onClick={() => {setEdit({id:id,value:text})}}/> */}
+					<TiEdit className="edit-icon" onClick={() => onEditTodo(id)}/>
 				</div>
 		
 				</div>

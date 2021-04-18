@@ -36,7 +36,12 @@ const ToDoList = () => {
 			return
 		}
 
-		setTodos(prev => prev.map(item => (item.id === id ? newValue : item)))
+		// setTodos(prev => prev.map(item => (item.id === id ? newValue : item)))
+		console.log("here in todo function")
+		console.log(id,newValue)
+		// todosRef.doc(id).update({
+		// 	text: newValue
+		// });
 	}
 
 	const completeTodo = id => {
