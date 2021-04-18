@@ -2,7 +2,7 @@ import { useState,useEffect,useRef } from 'react'
 import firebase, { firestore,auth } from '../firebase'
 
 const TodoForm = (props) => {
-	console.log('props',props)
+	// console.log('props',props)
 	const [input,setInput] = useState(props.edit ? props.edit.value : '')
 	const inputRef = useRef(null)
 	const todosRef = firestore.collection(`users/${auth.currentUser.uid}/todos`)
@@ -16,18 +16,20 @@ const TodoForm = (props) => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
-		// console.log(input)
-		
-		// props.onSubmit({
-		// 	id:Math.floor(Math.random()*1000),
-		// 	text:input
+
+		// todosRef.add({
+		// 	text:input,
+		// 	completed:false,
+		// 	// createdAt : firebase.firestore.FieldValue.serverTimestamp(),
 		// })
-		todosRef.add({
-			text:input,
-			completed:false,
-			// createdAt : firebase.firestore.FieldValue.serverTimestamp(),
+
+		props.onSubmit({
+			// id:Math.floor(Math.random()*1000),
+			// text:input
+				text:input,
+				completed:false
+			
 		})
-		// console.log(todoss)
 		setInput('')
 	}
 	return (
